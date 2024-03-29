@@ -1,0 +1,31 @@
+// 1. Base
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  &::selection {
+    color: $color-white;
+    background-color: $color-main;
+  }
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+  font-size: $text-standard;
+  color: $color-main;
+  line-height: 1.4;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+
+  @include respond(laptop) {
+    font-size: 52.5%;
+  }
+  @include respond(tab-land) {
+    font-size: 70%;
+  }
+}

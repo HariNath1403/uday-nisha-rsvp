@@ -1,0 +1,1083 @@
+// 1.Image
+
+.container {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  height: 100vh;
+
+  @include respond(tab-land) {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}
+.img {
+  position: relative;
+  overflow: hidden;
+
+  @include respond(tab-land) {
+    height: 100vh;
+    width: auto;
+  }
+
+  &__img {
+    background-image: linear-gradient(
+        to bottom,
+        rgba($color-accent, 0.1) 50%,
+        rgba($color-accent, 0.5)
+      ),
+      url(../imgs/main-background-small-2.jpg);
+    background-position: top center;
+    background-size: cover;
+    background-position-y: calc(-15% + 0.5 * (100% - 15%));
+    transform: scaleX(-1);
+    height: 100%;
+    width: 100%;
+
+    @include respond(tab-land) {
+      background-position-y: 0;
+      height: 100vh;
+      width: 100vw;
+    }
+  }
+
+  &__description {
+    position: absolute;
+    bottom: 10%;
+    left: 15%;
+    margin-right: $space-big;
+    color: $color-white;
+    display: flex;
+    flex-direction: column;
+    gap: $space-supersmall;
+
+    @include respond(tab-land) {
+      bottom: 5%;
+    }
+
+    @include respond(tab-port) {
+      left: 10%;
+      margin-right: $space-margin;
+    }
+
+    &--names {
+      font-weight: 500;
+      font-style: italic;
+      font-size: calc(#{$text-header-main + $text-header-sub}/ 2);
+      // text-transform: uppercase;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+      @include respond(laptop) {
+        font-size: calc(#{$text-big + $text-header-sub}/ 2);
+      }
+
+      @include respond(tab-port) {
+        font-size: $text-emphasize;
+      }
+
+      span {
+        font-size: $text-header-sub;
+        font-style: normal;
+
+        @include respond(laptop) {
+          font-size: $text-big;
+        }
+        @include respond(tab-port) {
+          font-size: $text-standard;
+        }
+      }
+    }
+
+    &--invitation {
+      font-size: $text-standard;
+      font-weight: 600;
+      line-height: 1.4;
+
+      @include respond(laptop) {
+        font-size: $text-small;
+      }
+
+      @include respond(tab-port) {
+        font-size: calc(#{$text-supersmall + $text-mini}/ 2);
+        font-size: $text-mini;
+        font-weight: 300;
+      }
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: 3%;
+    left: 3%;
+
+    &--btn {
+      display: inline-block;
+      border: none;
+      padding: $space-small;
+      letter-spacing: 1.4px;
+      font-size: $text-mini;
+      background-color: $color-white;
+      color: $color-text;
+      text-decoration: none;
+      border-radius: 12rem;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: $space-mini;
+      box-shadow: 0 1rem 2rem rgba($color-accent, 0.1);
+
+      @include respond(tab-land) {
+        padding: $space-sub;
+        font-size: calc(#{$text-standard + $text-emphasize}/ 2);
+        gap: $space-small;
+      }
+
+      @include respond(tab-port) {
+        padding: $space-small;
+        font-size: $text-small;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: $color-accent;
+        color: $color-white;
+      }
+
+      svg {
+        fill: $color-text;
+      }
+
+      span {
+        display: inline-block;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+.img__menu--btn:hover svg {
+  fill: $color-white;
+}
+
+.container {
+  position: relative;
+}
+
+// 2. Navigation (Hamburger)
+
+.navigation {
+  background-color: $color-white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(0);
+  transition: all 0.3s;
+
+  @include respond(tab-land) {
+    height: 100vh;
+    width: 47.5%;
+  }
+
+  @include respond(tab-port) {
+    width: 85%;
+  }
+
+  &--hide {
+    transform: translateX(-100%);
+  }
+
+  &__exit {
+    border: none;
+    font-size: $text-standard;
+    color: $color-main;
+    background-color: transparent;
+    position: absolute;
+    top: 2.5%;
+    right: 7.5%;
+    transform: scale(1);
+    transition: all 0.3s;
+
+    @include respond(tab-land) {
+      font-size: $text-emphasize;
+    }
+
+    @include respond(tab-port) {
+      font-size: $text-standard;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $color-accent;
+      transform: scale(1.1);
+    }
+  }
+
+  &__content {
+    margin: $space-standard;
+
+    @include respond(laptop) {
+      margin: $space-standard $space-sub;
+    }
+
+    @include respond(tab-land) {
+      margin: $space-widegap $space-sub;
+    }
+
+    @include respond(tab-port) {
+      margin: $space-margin $space-small;
+    }
+  }
+
+  &__header {
+    color: $color-accent;
+    font-size: $text-big;
+    padding: 0 $space-small;
+
+    @include respond(tab-port) {
+      font-size: calc(#{$text-emphasize + $text-big}/ 2);
+    }
+  }
+
+  &__list {
+    margin-top: $space-gap;
+
+    @include respond(tab-land) {
+      margin-top: $space-margin;
+    }
+
+    li {
+      list-style: none;
+
+      &:not(:last-child) {
+        margin-bottom: $space-small;
+
+        @include respond(tab-land) {
+          margin-bottom: $space-standard;
+        }
+
+        @include respond(tab-port) {
+          margin-bottom: $space-mini;
+        }
+      }
+    }
+
+    &--link {
+      &:link,
+      &:visited {
+        font-size: $text-standard;
+        text-decoration: none;
+        color: $color-main;
+        transition: all 0.3s;
+
+        @include respond(tab-land) {
+          font-size: calc(#{$text-emphasize + $text-standard}/ 2);
+        }
+
+        @include respond(tab-port) {
+          font-size: calc(#{$text-small + $text-standard}/ 2);
+        }
+      }
+
+      &:hover,
+      &:active {
+        color: $color-accent;
+      }
+    }
+  }
+  &__cta {
+    display: block;
+    text-align: center;
+    margin: $space-gap $space-margin;
+    border: 2px solid transparent;
+    background-color: $color-accent;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    transition: all 0.3s;
+    position: relative;
+
+    @include respond(tab-land) {
+      margin: $space-gap;
+    }
+
+    &--btn {
+      font-size: $text-mini;
+      text-decoration: none;
+      color: $color-white;
+      padding: $space-mini $space-supersmall;
+      box-shadow: 0 2rem 4rem rgba($color-black, 0.05);
+      display: block;
+      height: 100%;
+      width: 100%;
+
+      @include respond(tab-land) {
+        font-size: calc(#{$text-small + $text-standard}/ 2);
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    }
+
+    &:active {
+      transform: translateY(0) scale(1);
+    }
+  }
+}
+
+// 3. Content 1 (Details)
+
+.content {
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &__page {
+    // height: 100vh;
+    text-align: center;
+    margin: 0 $space-standard;
+    padding-top: $space-widegap;
+    background-color: #fff;
+    overflow-y: hidden;
+
+    @include respond(tab-land) {
+      // height: 75vh;
+      margin: 0;
+      padding: $space-decent $space-standard;
+    }
+
+    @include respond(tab-port) {
+      padding: $space-decent $space-small;
+    }
+
+    @include respond(phone) {
+      padding: $space-gap $space-mini;
+    }
+
+    &:nth-child(odd) {
+      background-color: #fff;
+      @include respond(tab-land) {
+        background-color: $color-white;
+      }
+    }
+  }
+
+  &__context {
+    display: flex;
+    flex-direction: column;
+    gap: calc(#{$space-gap + $space-standard}/ 2);
+    margin: $space-standard;
+
+    @include respond(laptop) {
+      gap: $space-standard;
+      margin: $space-margin $space-mini $space-standard;
+    }
+
+    @include respond(tab-land) {
+      gap: $space-margin;
+      margin: $space-standard 0;
+    }
+
+    @include respond(tab-port) {
+      margin: $space-mini 0 $space-standard;
+    }
+
+    @include respond(phone) {
+      gap: $space-gap;
+      margin: $space-mini 0 $space-sub;
+    }
+
+    &--datetime {
+      font-weight: 400;
+      font-size: $text-emphasize;
+      display: flex;
+      flex-direction: column;
+
+      @include respond(tab-land) {
+        font-size: calc(#{$text-big + $text-emphasize}/ 2);
+      }
+
+      @include respond(tab-port) {
+        font-size: calc(#{$text-emphasize + $text-standard}/ 2);
+        font-size: $text-emphasize;
+      }
+
+      @include respond(phone) {
+        font-size: calc(#{$text-emphasize + $text-standard}/ 2);
+      }
+
+      span {
+        &:nth-child(2) {
+          color: $color-accent;
+        }
+      }
+    }
+
+    &--venue {
+      font-weight: 300;
+      font-size: $text-standard;
+      display: flex;
+      flex-direction: column;
+
+      @include respond(tab-land) {
+        font-size: calc(#{$text-emphasize + $text-standard}/ 2);
+      }
+
+      @include respond(tab-port) {
+        font-size: calc(#{$text-small + $text-standard}/ 2);
+        font-size: $text-standard;
+      }
+
+      span {
+        &:first-child {
+          font-weight: 400;
+          color: $color-accent;
+        }
+      }
+    }
+
+    &--countdown {
+      &--title {
+        font-size: calc(#{$text-small + $text-mini}/ 2);
+        color: $color-accent;
+        line-height: 1;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin-bottom: $space-mini;
+
+        @include respond(tab-land) {
+          font-size: $text-standard;
+        }
+
+        @include respond(tab-port) {
+          font-size: $text-small;
+        }
+      }
+    }
+
+    &--remaining {
+      font-weight: 300;
+      font-size: calc(#{$text-small + $text-mini}/ 2);
+      line-height: 1.4;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: center;
+      gap: $space-mini;
+
+      @include respond(laptop) {
+        font-size: $text-mini;
+      }
+
+      @include respond(tab-land) {
+        font-size: $text-standard;
+      }
+
+      @include respond(tab-port) {
+        font-size: $text-small;
+      }
+
+      @include respond(phone) {
+        font-size: $text-mini;
+      }
+    }
+  }
+
+  &__cta {
+    &--btn {
+      border: 2px solid $color-main;
+      list-style: none;
+      text-decoration: none;
+      display: inline-block;
+      background-color: transparent;
+      color: $color-main;
+      padding: $space-mini $space-sub;
+      font-size: $text-mini;
+      font-weight: 400;
+      border-radius: 6px;
+      transform: scale(1);
+      transition: all 0.3s;
+
+      @include respond(tab-land) {
+        padding: $space-small $space-gap;
+        font-size: $text-standard;
+      }
+
+      @include respond(tab-port) {
+        padding: $space-mini $space-sub;
+        font-size: calc(#{$text-small + $text-standard}/ 2);
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: $color-accent;
+        color: $color-white;
+        border: 2px solid $color-white;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+// 4. Content 2 (Schedule)
+
+.schedule {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: $text-big;
+    font-weight: 400;
+
+    @include respond(tab-port) {
+      font-size: $text-emphasize;
+    }
+
+    @include respond(phone) {
+      font-size: calc(#{$text-emphasize + $text-standard}/ 2);
+    }
+  }
+
+  &__content {
+    margin: $space-gap $space-gap;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+
+    @include respond(laptop) {
+      margin: $space-gap calc(#{$space-small + $space-mini}/ 2);
+    }
+
+    @include respond(tab-port) {
+      margin: $space-small $space-mini;
+    }
+
+    &--pre {
+      font-size: calc(#{$text-standard + $text-small}/ 2);
+      line-height: 1.6;
+      margin-bottom: $space-gap;
+      text-align: justify;
+
+      @include respond(tab-land) {
+        font-size: $text-emphasize;
+      }
+
+      @include respond(tab-port) {
+        font-size: $text-standard;
+      }
+
+      @include respond(phone) {
+        font-size: calc(#{$text-small + $text-standard}/ 2);
+        margin-bottom: $space-sub;
+      }
+    }
+
+    &--container {
+      // margin-top: $space-mini;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-small;
+    }
+
+    &--info {
+      display: flex;
+      align-items: center;
+      font-size: calc(#{$text-small + $text-mini}/ 2);
+      gap: $space-small;
+
+      @include respond(tab-land) {
+        font-size: calc(#{$text-emphasize + $text-standard}/ 2);
+      }
+
+      @include respond(tab-port) {
+        font-size: $text-small;
+        gap: $space-mini;
+      }
+
+      &:last-child {
+        color: $color-accent;
+      }
+
+      &--icon {
+        font-size: $text-standard;
+
+        @include respond(tab-land) {
+          font-size: $text-emphasize;
+        }
+
+        @include respond(tab-port) {
+          font-size: calc(#{$text-standard + $text-emphasize}/ 2);
+        }
+      }
+    }
+  }
+
+  &__map {
+    margin-top: $space-standard;
+    position: relative;
+
+    &--frame {
+      margin: 0 auto;
+      width: 35rem;
+      height: 23rem;
+
+      @include respond(laptop) {
+        width: 30rem;
+        height: 20rem;
+      }
+
+      @include respond(tab-land) {
+        width: 40rem;
+        height: 25rem;
+      }
+
+      @include respond(tab-port) {
+        width: 30rem;
+        height: 23rem;
+      }
+
+      @include respond(phone) {
+        width: 27rem;
+        height: 20rem;
+      }
+    }
+
+    &--link {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+  }
+}
+
+// 5. Content 3 (RSVP Form)
+.rsvp {
+  &__header {
+    display: flex;
+    flex-direction: column;
+    // gap: $space-supersmall;
+    margin-bottom: $space-gap;
+
+    @include respond(laptop) {
+      margin-bottom: $space-sub;
+    }
+
+    @include respond(tab-port) {
+      margin-bottom: $space-mini;
+    }
+
+    &--main {
+      font-size: $text-emphasize;
+      font-weight: 400;
+      text-transform: uppercase;
+
+      @include respond(tab-port) {
+        font-size: calc(#{$text-emphasize + $text-standard}/ 2);
+      }
+
+      @include respond(phone) {
+        font-size: $text-standard;
+      }
+    }
+
+    &--sub {
+      font-size: $text-standard;
+      font-weight: 300;
+      letter-spacing: 10px;
+
+      @include respond(laptop) {
+        letter-spacing: 5px;
+      }
+
+      @include respond(tab-port) {
+        font-size: $text-small;
+        letter-spacing: 7.5px;
+      }
+
+      @include respond(phone) {
+        letter-spacing: 5px;
+      }
+    }
+  }
+
+  &__form {
+    margin: 0 $space-standard;
+
+    @include respond(laptop) {
+      margin: $space-small;
+    }
+
+    @include respond(tab-port) {
+      margin: $space-supersmall;
+    }
+
+    &--container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-small;
+
+      @include respond(tab-land) {
+        gap: $space-sub;
+      }
+
+      @include respond(tab-port) {
+        gap: $space-small;
+      }
+    }
+
+    &--question {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: start;
+
+      &--label {
+        color: $color-main;
+        font-family: inherit;
+        font-size: calc(#{$text-small + $text-mini}/ 2);
+        font-weight: 600;
+        letter-spacing: 1.5px;
+
+        @include respond(tab-land) {
+          font-size: $text-standard;
+        }
+
+        @include respond(phone) {
+          font-size: $text-small;
+        }
+      }
+
+      &--input {
+        color: $color-accent;
+        display: block;
+        font-family: inherit;
+        font-size: $text-mini;
+        padding: $space-mini;
+        width: 100%;
+
+        @include respond(tab-land) {
+          font-size: $text-small;
+        }
+
+        @include respond(phone) {
+          font-size: $text-mini;
+        }
+      }
+
+      &--radio {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        gap: $space-mini;
+        font-size: $text-mini;
+
+        @include respond(laptop) {
+          gap: $space-supersmall;
+          font-size: calc(#{$text-supersmall + $text-mini}/ 2);
+        }
+
+        @include respond(tab-land) {
+          flex-direction: column;
+          align-items: flex-start;
+          font-size: $text-small;
+        }
+
+        @include respond(phone) {
+          font-size: $text-mini;
+        }
+
+        label {
+          color: $color-text;
+        }
+      }
+    }
+
+    &--submit {
+      padding: calc(#{$space-supersmall + $space-mini}/ 2) $space-small;
+      font-size: $text-small;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      color: $color-white;
+      background-color: $color-text;
+      background-color: #bebebe;
+      border: none;
+      border-radius: 3px;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.05);
+      margin-top: $space-gap;
+      transform: translateY(0) scale(1);
+      transition: all 0.3s;
+
+      @include respond(tab-land) {
+        font-size: $text-standard;
+        padding: $space-mini $space-sub;
+        margin-top: $space-supersmall;
+      }
+
+      @include respond(tab-port) {
+        font-size: $text-small;
+        // margin-top: $space-mini;
+      }
+
+      @include respond(phone) {
+        display: block;
+        margin-left: auto;
+        font-size: $text-mini;
+        transform: translateY(-95%);
+      }
+
+      &--complete {
+        background-color: $color-accent;
+
+        &:hover {
+          cursor: pointer;
+          transform: translateY(-2px) scale(1.05);
+          box-shadow: 0 2rem 4rem rgba($color-black, 0.025);
+        }
+
+        &:active {
+          transform: translateY(0) scale(0.95);
+          box-shadow: 0 1rem 2rem rgba($color-black, 0.05);
+        }
+      }
+    }
+  }
+
+  &__submitted {
+    margin: 0 $space-standard;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+    gap: $space-sub;
+
+    @include respond(laptop) {
+      margin: 0 $space-sub;
+    }
+
+    @include respond(tab-port) {
+      margin: 0 $space-mini;
+    }
+
+    &--header {
+      font-size: calc(#{$text-emphasize + $text-standard}/ 2);
+      font-weight: 400;
+      margin: $space-margin 0 $space-sub;
+
+      @include respond(tab-land) {
+        font-size: calc(#{$text-emphasize + $text-big}/ 2);
+        margin: $space-margin 0 $space-supersmall;
+      }
+
+      @include respond(tab-port) {
+        font-size: calc(#{$text-standard + $text-emphasize}/ 2);
+        font-size: $text-standard;
+      }
+
+      @include respond(phone) {
+        font-size: calc(#{$text-standard + $text-small}/ 2);
+      }
+    }
+
+    &--text {
+      display: flex;
+      flex-direction: column;
+      gap: $space-sub;
+
+      h3 {
+        text-align: justify;
+        font-size: $text-small;
+        font-weight: 300;
+
+        @include respond(tab-land) {
+          font-size: calc(#{$text-emphasize + $text-standard}/ 2);
+        }
+
+        @include respond(tab-port) {
+          font-size: $text-small;
+        }
+
+        @include respond(phone) {
+          font-size: calc(#{$text-small + $text-mini}/ 2);
+        }
+      }
+    }
+  }
+}
+
+// 6. Content (Page 4) - Contact Us
+.assistance {
+  margin: 0 $space-gap;
+
+  @include respond(laptop) {
+    margin: $space-small;
+  }
+
+  @include respond(tab-port) {
+    margin: 0 $space-supersmall;
+  }
+
+  &__header {
+    h2 {
+      font-size: $text-emphasize;
+      font-weight: 600;
+
+      @include respond(tab-land) {
+        font-size: $text-big;
+      }
+
+      @include respond(tab-port) {
+        font-size: calc(#{$text-emphasize + $text-standard}/ 2);
+      }
+    }
+  }
+
+  &__inquiries {
+    margin-top: $space-sub;
+
+    @include respond(tab-land) {
+      margin-top: $space-gap;
+    }
+
+    @include respond(phone) {
+      margin-top: $space-small;
+    }
+
+    &--text {
+      font-size: $text-small;
+      font-weight: 300;
+      text-align: justify;
+      line-height: 1.6;
+      margin-bottom: $space-sub;
+
+      @include respond(tab-land) {
+        font-size: $text-standard;
+      }
+
+      @include respond(tab-port) {
+        font-size: calc(#{$text-small + $text-standard}/ 2);
+        font-size: $text-small;
+        line-height: 1.4;
+      }
+    }
+
+    &--sides {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: $space-small;
+      text-align: justify;
+      justify-content: flex-start;
+      margin-bottom: $space-sub;
+
+      &--per {
+        font-size: $text-mini;
+        font-weight: 400;
+
+        @include respond(tab-land) {
+          font-size: $text-small;
+        }
+
+        @include respond(tab-port) {
+          font-size: $text-mini;
+        }
+
+        a {
+          &:link,
+          &:visited {
+            color: $color-accent;
+            text-decoration: none;
+            display: block;
+          }
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  // &__technical {
+  //   font-size: $text-mini;
+  //   font-weight: 300;
+  //   margin-bottom: calc(#{$space-widegap * 2});
+
+  //   @include respond(laptop) {
+  //     margin-bottom: calc(#{$space-widegap * 1.5});
+  //   }
+
+  //   @include respond(tab-land) {
+  //     margin-bottom: calc(#{$space-widegap * 2});
+  //     font-size: $text-small;
+  //   }
+
+  //   @include respond(tab-port) {
+  //     margin-bottom: calc(#{$space-widegap * 1.25});
+  //     font-size: $text-mini;
+  //   }
+
+  //   @include respond(phone) {
+  //     margin-bottom: $space-widegap;
+  //   }
+
+  //   &--text {
+  //     text-align: justify;
+
+  //     &--contact {
+  //       &:link,
+  //       &:visited {
+  //         font-weight: 400;
+  //         color: $color-accent;
+  //         text-decoration: none;
+  //       }
+
+  //       &:hover {
+  //         text-decoration: underline;
+  //       }
+  //     }
+  //   }
+  // }
+
+  &__credits {
+    margin-top: calc(#{$space-widegap * 2});
+
+    @include respond(laptop) {
+      margin-top: calc(#{$space-widegap * 1.75});
+    }
+
+    @include respond(tab-land) {
+      margin-top: calc(#{$space-widegap * 2});
+    }
+
+    @include respond(tab-port) {
+      margin-top: calc(#{$space-widegap * 1.25});
+    }
+
+    @include respond(phone) {
+      margin-top: $space-widegap;
+    }
+
+    &--name {
+      font-size: calc(#{$text-supersmall + $text-mini}/ 2);
+      font-weight: 300;
+
+      @include respond(tab-land) {
+        font-size: calc(#{$text-small + $text-mini}/ 2);
+      }
+
+      @include respond(tab-port) {
+        font-size: calc(#{$text-supersmall + $text-mini}/ 2);
+      }
+    }
+  }
+}

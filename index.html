@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Uday & Nish</title>
+    <script defer src="js/script.js"></script>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <section class="img">
+        <div class="img__img" id="background__img">
+          <link
+            rel="preload"
+            href="imgs/main-background-small-2.jpg"
+            as="image"
+          />
+        </div>
+        <div class="img__description">
+          <h1 class="img__description--names">
+            Uday
+            <span>&#10084;</span>
+            Nish
+          </h1>
+          <h3 class="img__description--invitation">
+            We would like to invite you to our wedding reception on Sunday, 2nd
+            June 2024
+          </h3>
+        </div>
+        <div class="img__menu">
+          <a class="img__menu--btn">
+            <svg width="24" height="18">
+              <rect width="24" height="2" rx="1"></rect>
+              <rect y="8" width="24" height="2" rx="1"></rect>
+              <rect y="16" width="24" height="2" rx="1"></rect>
+            </svg>
+            <span>Menu</span>
+          </a>
+        </div>
+      </section>
+      <section class="navigation navigation--hide" id="navigation">
+        <button class="navigation__exit">X</button>
+        <div class="navigation__content">
+          <h2 class="navigation__header">Uday & Nish</h2>
+          <ul class="navigation__list">
+            <li>
+              <a href="#home-page" class="navigation__list--link">Welcome</a>
+            </li>
+            <li>
+              <a href="#schedule-page" class="navigation__list--link"
+                >Venue Details</a
+              >
+            </li>
+            <li>
+              <a href="#rsvp-page" class="navigation__list--link">RSVP</a>
+            </li>
+            <li>
+              <a href="#assistance-page" class="navigation__list--link"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="navigation__cta">
+          <a href="#rsvp-page" class="navigation__cta--btn">RSVP</a>
+        </div>
+      </section>
+      <section class="content">
+        <div class="content__page" id="home-page">
+          <div class="content__context">
+            <h3 class="content__context--datetime">
+              <span>Sunday</span>
+              <span>June 02, 2024</span>
+              <span>from 7 pm onwards</span>
+            </h3>
+
+            <h3 class="content__context--venue">
+              <span>Astana Garden Glass Hall, Level 3M</span>
+              <span
+                >Tower 6 Skypark, Jalan Teknokrat 1, 47100 Cyberjaya,
+                Selangor</span
+              >
+            </h3>
+            <div class="content__context--countdown">
+              <h3 class="content__context--countdown--title">
+                &laquo; Countdown &raquo;
+              </h3>
+              <h3 class="content__context--remaining">
+                <span class="content__context--remaining--days">100 days</span>
+                <span class="content__context--remaining--hours">10 Hrs</span>
+                <span class="content__context--remaining--min">05 min</span>
+              </h3>
+            </div>
+          </div>
+          <div class="content__cta">
+            <a class="content__cta--btn" href="#rsvp-page">RSVP</a>
+          </div>
+        </div>
+        <div class="content__page" id="schedule-page">
+          <div class="schedule">
+            <h2 class="schedule__title">Venue Details</h2>
+            <div class="schedule__content">
+              <p class="schedule__content--pre">
+                🚗 Parking at B1 @ Tower 6 &mdash; Cashless Parking with TnG /
+                Debit Card
+              </p>
+              <div class="schedule__content--container">
+                <!-- <div class="schedule__content--info">
+                  <ion-icon
+                    name="car-outline"
+                    class="schedule__content--info--icon"
+                  ></ion-icon>
+                  <p class="schedule__content--info--description">
+                    Cashless Parking with TnG or Debit Card
+                  </p>
+                </div> -->
+                <div class="schedule__content--info">
+                  <ion-icon
+                    name="location-outline"
+                    class="schedule__content--info--icon"
+                  ></ion-icon>
+                  <a
+                    class="schedule__content--info--description schedule__content--info--link"
+                    style="color: #d94169"
+                    href="https://www.google.com/maps/place/Astana+Sky+Garden+event+hall+Skypark+Cyberjaya/@2.9507907,101.6502039,17z/data=!3m1!4b1!4m6!3m5!1s0x31cdb7ade32b6163:0x46ce2d10c6da2a7!8m2!3d2.9507854!4d101.6550748!16s%2Fg%2F11s5p_vr0q?entry=ttu"
+                    target="_blank"
+                  >
+                    Astana Garden Glass Hall
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="schedule__map">
+              <iframe
+                frameborder="0"
+                style="border: 0"
+                src="https://embed.waze.com/iframe?zoom=16&lat=2.950838&lon=101.654885"
+                allowfullscreen
+                class="schedule__map--frame"
+              >
+              </iframe>
+              <a
+                class="schedule__map--link"
+                href="https://www.waze.com/live-map/directions?to=ll.2.950838%2C101.654885"
+                target="_blank"
+                >&nbsp;</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="content__page" id="rsvp-page">
+          <div class="rsvp">
+            <div class="rsvp__header">
+              <h2 class="rsvp__header--main">RSVP Here</h2>
+              <h3 class="rsvp__header--sub">by 10 <sup>th</sup> May 2024</h3>
+            </div>
+            <iframe
+              name="hidden_iframe"
+              id="hidden_iframe"
+              style="display: none"
+            ></iframe>
+            <div class="rsvp__form">
+              <form
+                action="https://docs.google.com/forms/d/e/1FAIpQLSdCJrj9Y_iRblFrEnO37Kyvf4MRl5LTvc14VmZUjM_oTcdcHg/formResponse"
+                method="post"
+                target="hidden_iframe"
+                class="rsvp__form--form"
+              >
+                <div class="rsvp__form--container">
+                  <div class="rsvp__form--question">
+                    <label
+                      for="entry.152477188"
+                      class="rsvp__form--question--label"
+                      >Full Name</label
+                    >
+                    <input
+                      type="text"
+                      name="entry.152477188"
+                      placeholder="Name (in Proper Case)"
+                      id="form-name"
+                      required
+                      class="rsvp__form--question--input"
+                    />
+                  </div>
+                  <div class="rsvp__form--question">
+                    <label
+                      for="entry.1818471564"
+                      class="rsvp__form--question--label"
+                      >Phone No.</label
+                    >
+                    <input
+                      type="text"
+                      name="entry.1818471564"
+                      placeholder="Contact No (without +, -)"
+                      id="form-phone"
+                      required
+                      pattern="\d{10,11}"
+                      class="rsvp__form--question--input"
+                    />
+                  </div>
+                  <div class="rsvp__form--question">
+                    <label
+                      for="entry.2018856377"
+                      class="rsvp__form--question--label"
+                      >Email Address</label
+                    >
+                    <input
+                      type="email"
+                      name="entry.2018856377"
+                      placeholder="&mdash;Will be sent a reminder email before the event."
+                      id="form-email"
+                      required
+                      class="rsvp__form--question--input"
+                    />
+                  </div>
+                  <div class="rsvp__form--question">
+                    <label
+                      for="entry.910894803"
+                      class="rsvp__form--question--label"
+                      >No. of Pax</label
+                    >
+                    <input
+                      type="text"
+                      name="entry.910894803"
+                      placeholder="No of Pax (whole number)"
+                      id="form-pax"
+                      required
+                      pattern="[1-9]\d*"
+                      class="rsvp__form--question--input"
+                    />
+                  </div>
+                  <div class="rsvp__form--question">
+                    <label class="rsvp__form--question--label"
+                      >Affliation</label
+                    >
+                    <div class="rsvp__form--question--radio">
+                      <div>
+                        <input
+                          type="radio"
+                          id="form-grooms-side"
+                          name="entry.1886071163"
+                          value="Groom's side"
+                        />
+                        <label for="form-grooms-side">Groom's side</label><br />
+                      </div>
+                      <div>
+                        <input
+                          type="radio"
+                          id="form-brides-side"
+                          name="entry.1886071163"
+                          value="Bride's side"
+                        />
+                        <label for="form-brides-side">Bride's side</label><br />
+                      </div>
+                      <div>
+                        <input
+                          type="radio"
+                          id="form-others"
+                          name="entry.1886071163"
+                          value="Others"
+                        />
+                        <label for="form-others">Others</label><br />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="rsvp__form--submit">Submit</button>
+              </form>
+            </div>
+            <div class="rsvp__submitted">
+              <h2 class="rsvp__submitted--header">🥳 Submission Confirmed</h2>
+              <div class="rsvp__submitted--text">
+                <h3>
+                  Thank you for your submission. Please let us know if you need
+                  to edit your submission.
+                </h3>
+                <h3>Please refresh the page to submit another RSVP request.</h3>
+                <h3>
+                  We eagerly anticipate your presence and are looking forward to
+                  seeing you at the event.
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content__page" id="assistance-page">
+          <div class="assistance">
+            <div class="assistance__header">
+              <h2>Need Assistance?</h2>
+            </div>
+            <div class="assistance__inquiries">
+              <p class="assistance__inquiries--text">
+                For any inquiries or to make changes to a submitted RSVP, please
+                contact the respective sides via WhatsApp:
+              </p>
+              <ul class="assistance__inquiries--sides">
+                <li class="assistance__inquiries--sides--per">
+                  <span>Groom's Side</span>
+                  <span>:</span> <br />
+                  <!-- <a href="whatsapp://send?phone=+60123292227"
+                    >Mr. Balakrishnan (Groom's Father)</a
+                  > -->
+                  <a href="whatsapp://send?phone=+60123292227"
+                    >&mdash; Mr. Balakrishnan (Groom's Father)</a
+                  >
+                  <a href="whatsapp://send?phone=+60173292227"
+                    >&mdash; Mr. Manikandan (Groom's Brother)</a
+                  >
+                </li>
+                <li class="assistance__inquiries--sides--per">
+                  <span>Bride's Side</span>
+                  <span>:</span> <br />
+                  <a href="whatsapp://send?phone=+60123269595"
+                    >&mdash; Mr. Ramesh Anand (Bride's Father)</a
+                  >
+                  <a href="whatsapp://send?phone=+60162686592"
+                    >&mdash; Mrs. Susila (Bride's Mother)</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- <div class="assistance__technical">
+              <p class="assistance__technical--text">
+                <span class="assitance__technical--text--description"
+                  >For technical support or any assistance regarding the
+                  e-invitation, please contact:
+                </span>
+                <span>
+                  <a
+                    href="whatsapp://send?phone=+60163944457"
+                    class="assistance__technical--text--contact"
+                    >Mr. Harivin Nathan</a
+                  >
+                </span>
+              </p>
+            </div> -->
+
+            <div class="assistance__credits">
+              <h4 class="assistance__credits--name">
+                Designed and Developed by: Harivin Nathan
+              </h4>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

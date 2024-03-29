@@ -1,0 +1,59 @@
+// / 1. Colors
+$color-main: #171559;
+$color-accent: #d94169;
+$color-background: #f29f80;
+$color-text: #191000;
+$color-text: #808080;
+$color-black: #000000;
+$color-white: #faf2eb;
+// $color-white: #fbfaf2;
+$color-testing: orangered;
+
+// 2. Font size
+$text-header-main: 8.4rem;
+$text-header-sub: 6.4rem;
+$text-big: 4.8rem;
+$text-emphasize: 3.6rem;
+$text-standard: 2.4rem;
+$text-small: 2rem;
+$text-mini: 1.6rem;
+$text-supersmall: 1.2rem;
+
+// 3. Whitespace
+$space-big: 12.8rem;
+$space-widegap: 8.4rem;
+$space-decent: 7.2rem;
+$space-margin: 5.6rem;
+$space-standard: 4.8rem;
+$space-gap: 3.6rem;
+$space-sub: 2.8rem;
+$space-small: 1.8rem;
+$space-mini: 1.2rem;
+$space-supersmall: 0.6rem;
+
+// 4. Media Queries
+@mixin respond($breakpoint) {
+  @if $breakpoint == laptop {
+    @media (max-width: 87.5em) {
+      @content; // 1400px
+    }
+  }
+
+  @if $breakpoint == tab-land {
+    @media (max-width: 56.25em) {
+      @content; // 900px
+    }
+  }
+
+  @if $breakpoint == tab-port {
+    @media (max-width: 39.69em) {
+      @content; //635px
+    }
+  }
+
+  @if $breakpoint == phone {
+    @media (max-width: 24.3em) {
+      @content; //389px
+    }
+  }
+}
