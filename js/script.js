@@ -131,9 +131,15 @@ formRsvp.addEventListener("submit", () => {
 const inputFields = document.querySelectorAll("input");
 
 // Function to handle focus event on input fields
-function handleInputFocus() {
-  // Scroll to the focused input field
-  this.scrollIntoView({
+function handleInputFocus(event) {
+  // Prevent default browser behavior
+  event.preventDefault();
+
+  // Get the target input field
+  const inputField = event.target;
+
+  // Scroll to the input field
+  inputField.scrollIntoView({
     behavior: "smooth",
     block: "nearest",
     inline: "start",
@@ -142,14 +148,5 @@ function handleInputFocus() {
 
 // Attach event listener to each input field
 inputFields.forEach((input) => {
-  input.addEventListener("focus", handleInputFocus);
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  var inputField = document.querySelectorAll("input");
-  inputField.forEach((field) => {
-    field.addEventListener("focus", function () {
-      field.scrollIntoView({ behavior: "smooth", block: "center" });
-    });
-  });
+  input.addEventListener("click", handleInputFocus);
 });

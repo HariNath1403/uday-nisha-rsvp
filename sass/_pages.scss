@@ -351,6 +351,7 @@
 
     @include respond(tab-port) {
       padding: $space-decent $space-small;
+      overflow-y: auto;
     }
 
     @include respond(phone) {

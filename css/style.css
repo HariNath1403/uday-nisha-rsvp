@@ -285,7 +285,8 @@ html {
         padding: 7.2rem 4.8rem; } }
     @media (max-width: 39.69em) {
       .content__page {
-        padding: 7.2rem 1.8rem; } }
+        padding: 7.2rem 1.8rem;
+        overflow-y: auto; } }
     @media (max-width: 24.3em) {
       .content__page {
         padding: 3.6rem 1.2rem; } }
