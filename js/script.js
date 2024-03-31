@@ -126,20 +126,13 @@ formRsvp.addEventListener("submit", () => {
 });
 
 // 5. Prevent Page From Jumping
-
 // Get all input fields
 const inputFields = document.querySelectorAll("input");
 
 // Function to handle focus event on input fields
-function handleInputFocus(event) {
-  // Prevent default browser behavior
-  event.preventDefault();
-
-  // Get the target input field
-  const inputField = event.target;
-
-  // Scroll to the input field
-  inputField.scrollIntoView({
+function handleInputFocus() {
+  // Scroll to the focused input field
+  this.scrollIntoView({
     behavior: "smooth",
     block: "nearest",
     inline: "start",
@@ -148,5 +141,5 @@ function handleInputFocus(event) {
 
 // Attach event listener to each input field
 inputFields.forEach((input) => {
-  input.addEventListener("click", handleInputFocus);
+  input.addEventListener("focus", handleInputFocus);
 });
