@@ -25,18 +25,64 @@
         rgba($color-accent, 0.1) 50%,
         rgba($color-accent, 0.5)
       ),
-      url(../imgs/main-background-small-2.jpg);
+      url(../imgs/Home/main-background-small-1.jpg);
     background-position: top center;
     background-size: cover;
     background-position-y: calc(-15% + 0.5 * (100% - 15%));
+    object-fit: fill;
     transform: scaleX(-1);
     height: 100%;
     width: 100%;
+    position: relative;
 
     @include respond(tab-land) {
       background-position-y: 0;
       height: 100vh;
       width: 100vw;
+    }
+
+    @include respond(phone) {
+      transform: scaleX(-1);
+      background-position-x: calc(5% + 0.5 * (100% - 5%));
+    }
+
+    &--btn {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      border-radius: 50%;
+      border: none;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.25);
+      background-color: rgba($color-accent, 0.75);
+      color: $color-main;
+      font-weight: 600;
+      font-size: $text-standard;
+      width: $space-standard;
+      height: $space-standard;
+      padding: $space-small;
+      transform: translateY(0) scale(1.1);
+      transition: all 0.3s;
+
+      &--left {
+        left: 5%;
+      }
+
+      &--right {
+        right: 5%;
+      }
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 0 2rem 4rem rgba($color-black, 0.15);
+        background-color: rgba($color-accent, 1);
+        transform: translateY(-3px) scale(1.25);
+      }
+
+      &:active {
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.25);
+        transform: translateY(1px) scale(1);
+      }
     }
   }
 
@@ -1008,65 +1054,33 @@
       }
     }
   }
-  // &__technical {
-  //   font-size: $text-mini;
-  //   font-weight: 300;
-  //   margin-bottom: calc(#{$space-widegap * 2});
 
-  //   @include respond(laptop) {
-  //     margin-bottom: calc(#{$space-widegap * 1.5});
-  //   }
+  &__gallery {
+    margin-top: $space-decent;
 
-  //   @include respond(tab-land) {
-  //     margin-bottom: calc(#{$space-widegap * 2});
-  //     font-size: $text-small;
-  //   }
+    &--link {
+      display: inline-block;
+      font-size: $text-small;
+      text-decoration: none;
+      text-transform: capitalize;
+      background-color: $color-accent;
+      border-radius: 9px;
+      color: $color-white;
+      padding: $space-mini;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
 
-  //   @include respond(tab-port) {
-  //     margin-bottom: calc(#{$space-widegap * 1.25});
-  //     font-size: $text-mini;
-  //   }
+      @include respond(tab-port) {
+        font-size: $text-mini;
+      }
 
-  //   @include respond(phone) {
-  //     margin-bottom: $space-widegap;
-  //   }
-
-  //   &--text {
-  //     text-align: justify;
-
-  //     &--contact {
-  //       &:link,
-  //       &:visited {
-  //         font-weight: 400;
-  //         color: $color-accent;
-  //         text-decoration: none;
-  //       }
-
-  //       &:hover {
-  //         text-decoration: underline;
-  //       }
-  //     }
-  //   }
-  // }
+      @include respond(phone) {
+        font-size: calc(#{$text-mini + $text-supersmall}/ 2);
+      }
+    }
+  }
 
   &__credits {
-    margin-top: calc(#{$space-widegap * 2});
-
-    @include respond(laptop) {
-      margin-top: calc(#{$space-widegap * 1.75});
-    }
-
-    @include respond(tab-land) {
-      margin-top: calc(#{$space-widegap * 2});
-    }
-
-    @include respond(tab-port) {
-      margin-top: calc(#{$space-widegap * 1.25});
-    }
-
-    @include respond(phone) {
-      margin-top: $space-widegap;
-    }
+    margin-top: $space-widegap;
 
     &--name {
       font-size: calc(#{$text-supersmall + $text-mini}/ 2);
@@ -1078,6 +1092,94 @@
 
       @include respond(tab-port) {
         font-size: calc(#{$text-supersmall + $text-mini}/ 2);
+      }
+    }
+  }
+}
+
+// 7. Gallery
+.gallery {
+  // height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: relative;
+
+  &__back {
+    position: absolute;
+    top: $space-small;
+    left: $space-small;
+    z-index: 2;
+
+    &--cta {
+      text-transform: uppercase;
+      font-size: calc(#{$text-standard + $text-small}/ 2);
+      font-weight: 600;
+      color: $color-main;
+      background-color: rgba($color-accent, 0.5);
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      border: none;
+      border-radius: 9px;
+      padding: $space-mini $space-sub;
+      transform: scale(0.85);
+      transition: all 0.3s;
+
+      @include respond(phone) {
+        font-size: $text-mini;
+        padding: $space-mini;
+      }
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1);
+        background-color: rgba($color-accent, 1);
+        box-shadow: 0 2rem 4rem rgba($color-black, 0.05);
+      }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: calc(#{$space-mini + $space-supersmall}/ 2);
+    margin-bottom: calc(#{$space-mini + $space-supersmall}/ 2);
+    height: 100vh;
+    width: 100vw;
+
+    @include respond(tab-port) {
+      height: 300vh;
+      // grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
+      gap: $space-mini;
+      margin-bottom: $space-mini;
+    }
+
+    @include respond(phone) {
+      // height: 300vh;
+      grid-template-columns: 1fr;
+    }
+
+    &--pic {
+      width: 100%;
+      border: 9px;
+      overflow: hidden;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: scale(1);
+        filter: brightness(100%);
+        transition: all 0.3s;
+
+        &:hover {
+          transform: scale(1.05);
+          filter: brightness(109%);
+        }
       }
     }
   }

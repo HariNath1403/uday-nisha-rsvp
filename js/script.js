@@ -1,36 +1,80 @@
 // 1. Picture Transition
-const backgroundImgs = [
-  "../imgs/main-background-small-4.jpg",
-  "../imgs/main-background-small-2.jpg",
-  "../imgs/main-background-small-5.jpg",
+let homeImages = [
+  "../imgs/Home/main-background-small-1.jpg",
+  "../imgs/Home/main-background-small-2.jpg",
+  "../imgs/Home/main-background-small-3.jpg",
+  "../imgs/Home/main-background-small-4.jpg",
+  "../imgs/Home/main-background-small-5.jpg",
 ];
 
+let maxWidth = false;
+
+if (window.innerWidth <= 390) {
+  maxWidth = true;
+}
+
 const backgroundContainer = document.getElementById("background__img");
+const leftArr = document.querySelector(".img__img--btn--left");
+const rightArr = document.querySelector(".img__img--btn--right");
+
 let indexBackground = 0;
 
-function preloadImages(urls) {
-  urls.forEach((url) => {
+const preloadImages = async function (urls) {
+  await urls.forEach((url) => {
     const img = new Image();
     img.src = url;
   });
-}
+};
 
-window.addEventListener("load", () => {
-  preloadImages(backgroundImgs);
+window.addEventListener("load", async () => {
+  if (maxWidth) {
+    homeImages = [
+      "../imgs/Home/main-background-small-7.jpg",
+      "../imgs/Home/main-background-small-5.jpg",
+      "../imgs/Home/main-background-small-6.jpg",
+      "../imgs/Home/main-background-small-2.jpg",
+      "../imgs/Home/main-background-small-3.jpg",
+    ];
+  }
+  preloadImages(homeImages);
 });
 
-function changeBackgroundImg() {
-  setTimeout(function () {
-    backgroundContainer.style.backgroundImage = `linear-gradient(to bottom, rgba(217, 65, 105, 0.1) 50%, rgba(217, 65, 105, 0.5)), url(${backgroundImgs[indexBackground]})`;
-  }, 0);
+function changeBackgroundImg(index) {
+  backgroundContainer.style.backgroundImage = `linear-gradient(to bottom, rgba(217, 65, 105, 0.1) 50%, rgba(217, 65, 105, 0.5)), url(${homeImages[index]})`;
+}
 
-  if (indexBackground < backgroundImgs.length - 1) {
-    indexBackground++;
-  } else {
+function turnRight(index) {
+  if (index > homeImages.length - 1) {
     indexBackground = 0;
+  } else {
+    indexBackground = index;
   }
 }
-setInterval(changeBackgroundImg, 3000);
+
+function turnLeft(index) {
+  if (index < 0) {
+    indexBackground = homeImages.length - 1;
+  } else {
+    indexBackground = index;
+  }
+}
+
+leftArr.addEventListener("click", () => {
+  turnRight(indexBackground + 1);
+  changeBackgroundImg(indexBackground);
+  console.log(indexBackground);
+});
+
+rightArr.addEventListener("click", () => {
+  turnLeft(indexBackground - 1);
+  changeBackgroundImg(indexBackground);
+  console.log(indexBackground);
+});
+
+setInterval(() => {
+  turnRight(indexBackground + 1);
+  changeBackgroundImg(indexBackground);
+}, 5000);
 
 // 2. Navigation pane
 const btnMenu = document.querySelector(".img__menu");
@@ -142,4 +186,25 @@ function handleInputFocus() {
 // Attach event listener to each input field
 inputFields.forEach((input) => {
   input.addEventListener("focus", handleInputFocus);
+});
+
+// 6. Gallery
+const pageGallery = document.getElementById("gallery");
+const pageHome = document.getElementById("container");
+const galleryLinks = document.querySelectorAll(".link--gallery");
+const returnToHome = document.querySelector(".gallery__back--cta");
+
+pageGallery.style.display = "none";
+
+galleryLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    pageHome.style.display = "none";
+    pageGallery.style.display = "block";
+  });
+});
+
+returnToHome.addEventListener("click", () => {
+  const currentUrl = window.location.href;
+  const baseUrl = currentUrl.split("#")[0];
+  window.location.href = baseUrl;
 });
