@@ -7,10 +7,14 @@ let homeImages = [
   "../imgs/Home/main-background-small-5.jpg",
 ];
 
-let maxWidth = false;
-
 if (window.innerWidth <= 390) {
-  maxWidth = true;
+  homeImages = [
+    "../imgs/Home/main-background-small-7.jpg",
+    "../imgs/Home/main-background-small-5.jpg",
+    "../imgs/Home/main-background-small-6.jpg",
+    "../imgs/Home/main-background-small-2.jpg",
+    "../imgs/Home/main-background-small-3.jpg",
+  ];
 }
 
 const backgroundContainer = document.getElementById("background__img");
@@ -19,62 +23,62 @@ const rightArr = document.querySelector(".img__img--btn--right");
 
 let indexBackground = 0;
 
-const preloadImages = async function (urls) {
-  await urls.forEach((url) => {
-    const img = new Image();
-    img.src = url;
-  });
+// Preload images
+const preloadImages = (urls) => {
+  return Promise.all(
+    urls.map((url) => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+    })
+  );
 };
 
-window.addEventListener("load", async () => {
-  if (maxWidth) {
-    homeImages = [
-      "../imgs/Home/main-background-small-7.jpg",
-      "../imgs/Home/main-background-small-5.jpg",
-      "../imgs/Home/main-background-small-6.jpg",
-      "../imgs/Home/main-background-small-2.jpg",
-      "../imgs/Home/main-background-small-3.jpg",
-    ];
-  }
-  preloadImages(homeImages);
-});
-
+// Update the background image with a smooth transition
 function changeBackgroundImg(index) {
+  backgroundContainer.style.transition = "background-image 0.5s ease-in-out";
   backgroundContainer.style.backgroundImage = `linear-gradient(to bottom, rgba(217, 65, 105, 0.1) 50%, rgba(217, 65, 105, 0.5)), url(${homeImages[index]})`;
 }
 
+// Handle next image logic
 function turnRight(index) {
-  if (index > homeImages.length - 1) {
-    indexBackground = 0;
-  } else {
-    indexBackground = index;
-  }
+  indexBackground = index >= homeImages.length ? 0 : index;
 }
 
+// Handle previous image logic
 function turnLeft(index) {
-  if (index < 0) {
-    indexBackground = homeImages.length - 1;
-  } else {
-    indexBackground = index;
-  }
+  indexBackground = index < 0 ? homeImages.length - 1 : index;
 }
 
+// Event listeners for navigation buttons
 leftArr.addEventListener("click", () => {
-  turnRight(indexBackground + 1);
+  turnLeft(indexBackground - 1);
   changeBackgroundImg(indexBackground);
-  console.log(indexBackground);
 });
 
 rightArr.addEventListener("click", () => {
-  turnLeft(indexBackground - 1);
+  turnRight(indexBackground + 1);
   changeBackgroundImg(indexBackground);
-  console.log(indexBackground);
 });
 
+// Auto-change background every 6.5 seconds
 setInterval(() => {
   turnRight(indexBackground + 1);
   changeBackgroundImg(indexBackground);
-}, 5000);
+}, 6500);
+
+// Wait for all images to preload before initializing
+window.addEventListener("load", async () => {
+  try {
+    await preloadImages(homeImages);
+    changeBackgroundImg(indexBackground); // Set the initial image after preloading
+  } catch (error) {
+    console.error("Error preloading images:", error);
+  }
+});
 
 // 2. Navigation pane
 const btnMenu = document.querySelector(".img__menu");
